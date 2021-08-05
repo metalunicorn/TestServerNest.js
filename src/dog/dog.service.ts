@@ -18,10 +18,19 @@ export class DogService {
 
   async create(createDogDto: CreateDogDto) {
 
-    const newDog = this.dogRepository.create()
-    newDog.name = createDogDto.name,
-      newDog.owner = await this.ownerService.findOne(createDogDto.ownerId);
-    await this.dogRepository.save(newDog);
+    // const newDog = this.dogRepository.create()
+    // newDog.name = createDogDto.name,
+    //   newDog.owner = await this.ownerService.findOne(createDogDto.ownerId);
+    // await this.dogRepository.save(newDog);
+    const owner = await this.ownerService.findOne(createDogDto.ownerId);
+    const newDog = this.dogRepository
+      .createQueryBuilder("NewDogs")
+      .insert()
+      .into(Dog)
+      .values([
+        { name: createDogDto.name, owner: owner }
+      ])
+      .execute()
     return 'This action adds a new dog';
   }
 

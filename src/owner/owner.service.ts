@@ -1,6 +1,7 @@
 import { Injectable, } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import console from 'console';
+import { Connection, Repository } from 'typeorm';
 import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
 import { Owner } from './entities/owner.entity';
@@ -15,11 +16,20 @@ export class OwnerService {
 
   async create(createOwnerDto: CreateOwnerDto) {
 
-    const newOwner = await this.ownerRepository.create()
-    newOwner.name = createOwnerDto.name,
-      await this.ownerRepository.save(newOwner);
-    console.log(newOwner);
-    return 'This action adds a new owner';
+    // const newOwner = await this.ownerRepository.create()
+    // newOwner.password = createOwnerDto.password
+    // newOwner.name = createOwnerDto.name,
+    //   await this.ownerRepository.save(newOwner);
+
+    const newOwner = await this.ownerRepository
+      .createQueryBuilder('NewOwners')
+      .insert()
+      .into(Owner)
+      .values([
+        { name: createOwnerDto.name, password: createOwnerDto.password }
+      ])
+      .execute()
+    return `This action adds a new owner ${createOwnerDto.name}: ${createOwnerDto.password} `;
   }
 
   findAll() {
@@ -37,4 +47,5 @@ export class OwnerService {
   remove(id: number) {
     return `This action removes a #${id} owner`;
   }
+
 }

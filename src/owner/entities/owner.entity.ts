@@ -16,6 +16,8 @@ export class Owner {
   @Column()
   name: string;
 
+  @Column()
+  password: string;
 
   @OneToMany(() => Dog, (dog) => dog.owner)
   dogs: Dog[];

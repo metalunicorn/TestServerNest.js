@@ -7,5 +7,6 @@ export class CreateOwnerDto {
     @IsOptional()
     @IsString()
     name: string;
-
+    @IsString()
+    password: string;
 }
