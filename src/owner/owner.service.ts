@@ -29,7 +29,7 @@ export class OwnerService {
       .insert()
       .into(Owner)
       .values([
-        { name: createOwnerDto.name, password: createOwnerDto.password, role: role }
+        { name: createOwnerDto.name, password: createOwnerDto.password, role: role, age: createOwnerDto.age }
       ])
       .execute()
     return `This action adds a new owner ${createOwnerDto.name}: ${createOwnerDto.password} `;

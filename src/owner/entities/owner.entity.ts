@@ -20,6 +20,9 @@ export class Owner {
   @Column()
   password: string;
 
+  @Column()
+  age: number;
+
   @ManyToOne(() => Role, (role) => role.id)
   role: Role;
 

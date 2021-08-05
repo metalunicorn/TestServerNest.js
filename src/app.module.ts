@@ -20,7 +20,7 @@ import { RoleModule } from './role/role.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      synchronize: true,
+      synchronize: false,
       autoLoadEntities: true,
       // migrationsTableName: 'custom_migration_table',
       // migrations: ['migration/*.ts'],
