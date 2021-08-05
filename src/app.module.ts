@@ -7,6 +7,7 @@ import { DogModule } from './dog/dog.module';
 import { DogController } from './dog/dog.controller';
 import { DogService } from './dog/dog.service';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
     DogModule,
     OwnerModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

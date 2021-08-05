@@ -22,7 +22,7 @@ export class DogService {
     // newDog.name = createDogDto.name,
     //   newDog.owner = await this.ownerService.findOne(createDogDto.ownerId);
     // await this.dogRepository.save(newDog);
-    const owner = await this.ownerService.findOne(createDogDto.ownerId);
+    const owner = await this.ownerService.findOnebyId(createDogDto.ownerId);
     const newDog = this.dogRepository
       .createQueryBuilder("NewDogs")
       .insert()

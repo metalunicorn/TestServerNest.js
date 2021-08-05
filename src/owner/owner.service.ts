@@ -1,6 +1,5 @@
 import { Injectable, } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import console from 'console';
 import { Connection, Repository } from 'typeorm';
 import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
@@ -36,9 +35,14 @@ export class OwnerService {
     return `This action returns all owner`;
   }
 
-  findOne(id: number) {
+  findOnebyId(id: number) {
     return this.ownerRepository.findOne(id)
   }
+
+  findOne(name: string) {
+    return this.ownerRepository.findOne({ name })
+  }
+
 
   update(id: number, updateOwnerDto: UpdateOwnerDto) {
     return `This action updates a #${id} owner`;
