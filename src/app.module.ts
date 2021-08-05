@@ -8,6 +8,7 @@ import { DogController } from './dog/dog.controller';
 import { DogService } from './dog/dog.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AuthModule } from './auth/auth.module';
     DogModule,
     OwnerModule,
     AuthModule,
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService],

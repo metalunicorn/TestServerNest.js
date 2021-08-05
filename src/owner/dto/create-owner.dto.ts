@@ -9,4 +9,6 @@ export class CreateOwnerDto {
     name: string;
     @IsString()
     password: string;
+    @IsString()
+    roleId: number;
 }
